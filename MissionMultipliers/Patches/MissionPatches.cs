@@ -7,26 +7,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Reflection.Emit;
-using UnityModManagerNet;
 
 namespace MissionMultipliers.Patches
 {
-    public static class PortPatches
+    public static class MissionPatches
     {
-        [HarmonyPatch(typeof(Port), "GetTotalPrice")]
+        [HarmonyPatch(typeof(Mission), "GetDeliveryRep")]
 #if DEBUG
         [HarmonyDebug]
 #endif  
-        public static class GetTotalPricePatch
+        public static class GetDeliveryRepPatch
         {
             [HarmonyPostfix]
             public static void Postfix(ref int __result)
             {
-                if (!Main.enabled) return;
-
-                __result = __result * (int)Main.settings.MissionPayMultiplier;
-
-                return;
+                __result = __result * MissionMultipliersMain.instance.missionRepMultiplier.Value;
             }
         }
     }

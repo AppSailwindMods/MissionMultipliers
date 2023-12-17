@@ -7,13 +7,24 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Reflection;
 using System.Reflection.Emit;
-using UnityModManagerNet;
+using UnityEngine;
 
 namespace MissionMultipliers.Patches
 {
     public static class IslandMissionOfficePatches
     {
-        [HarmonyPatch(typeof(IslandMissionOffice), "GenerateMissions")]
+        [HarmonyPatch(typeof(Mission), MethodType.Constructor, typeof(Port), typeof(Port), typeof(GameObject), typeof(int), typeof(int), typeof(float), typeof(int), typeof(int))]
+        private static class MissionCtorPatch
+        {
+            [HarmonyPrefix]
+            public static void Prefix(ref int totalPrice)
+            {
+                totalPrice *= MissionMultipliersMain.instance.missionPayMultiplier.Value;
+            }
+        }
+
+        // Replaced a transpiler with a patch to the constructor of the mission class
+        /*[HarmonyPatch(typeof(IslandMissionOffice), "GenerateMissions")]
 
         public static class GenerateMissionsPatch
         {
@@ -56,6 +67,6 @@ namespace MissionMultipliers.Patches
 
                 return codes;
             }
-        }
+        }*/
     }
 }

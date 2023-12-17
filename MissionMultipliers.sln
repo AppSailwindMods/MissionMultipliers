@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissionMultipliers", "MissionMultipliers.csproj", "{51341BDD-FA45-46B6-AAED-1253C6A4773D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MissionMultipliers", "MissionMultipliers/MissionMultipliers.csproj", "{51341BDD-FA45-46B6-AAED-1253C6A4773D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
